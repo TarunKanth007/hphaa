@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Zeyada', cursive;
+            background-color: #ffcccb;
+            color: #333;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            margin-top: 50px;
+            position: relative;
+            z-index: 2;
+        }
+        h1 {
+            font-size: 50px;
+            animation: bounce 2s infinite;
+        }
+        .message {
+            font-size: 20px;
+            margin: 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid black;
+            display: inline-block;
+            animation: typing 5s steps(50, end) forwards, blink 0.75s step-end infinite;
+        }
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+        .image {
+            width: 300px;
+            border-radius: 15px;
+            position: relative;
+            z-index: 3;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 10px;
+            position: relative;
+            z-index: 3;
+        }
+        .btn:hover {
+            background-color: #ff1493;
+        }
+        
+        .celebration-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .celebration-shape {
+            position: absolute;
+            font-size: 24px;
+            animation: rise 10s linear infinite;
+        }
+        @keyframes rise {
+            from {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+        /* Happy Birthday text animation */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay>
+        <source src="audio/song2.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div class="container">
+        <h1>❤️🎉 Happy Birthday, My Love 🎂✨</h1>
+        <p class="message">Wishing you all the happiness and love in the world on your special day! 🎈💖</p>
+        <p class="messaeg">Every day with you is a blessing. Your beauty 😍, smile 😊, and magical eyes ✨ brighten my world. Just seeing you brings me peace. I’m so lucky to have you! Wishing you a day as amazing as you are, filled with love, joy, and happiness! 💖🎈💕  LOVE YOU SOO MUCH</p>
+
+        <img src="images/3.jpg" alt="Birthday" class="image">
+        <br><br>
+        <button class="btn" id="galleryBtn" onclick="window.location.href='gallery.html'">View Photo Gallery 📸</button>
+    </div>
+    <div class="celebration-container"></div>
+    <script>
+        function createCelebration() {
+            const symbols = ["🎊", "⭐", "💖", "🎈", "✨", "🎉"];
+            for (let i = 0; i < 10; i++) {
+                let shape = document.createElement("div");
+                shape.classList.add("celebration-shape");
+                shape.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+                shape.style.left = Math.random() * 100 + "vw";
+                shape.style.animationDuration = Math.random() * 6 + 4 + "s";
+                document.querySelector(".celebration-container").appendChild(shape);
+                setTimeout(() => shape.remove(), 10000);
+            }
+        }
+        setInterval(createCelebration, 1000);
+    </script>
+</body>
+</html>
