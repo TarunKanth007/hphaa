@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Memories</title>
+    <link href="https://fonts.googleapis.com/css2?family=Zeyada&display=swap" rel="stylesheet">
+    <style>
+        body {
+            text-align: center;
+            background-color: #ffcccb;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .video-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .video-container {
+            display: flex;
+            align-items: center;
+            width: 600px;
+            gap: 20px;
+        }
+        .video-container:nth-child(odd) {
+            flex-direction: row;
+            z-index: 3;
+        }
+        .video-container:nth-child(even) {
+            flex-direction: row-reverse;
+            z-index: 3;
+        }
+        .video-container video {
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 3;
+        }
+        .video-caption {
+            width: 250px;
+            padding: 10px;
+            font-family: 'Zeyada', cursive;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            z-index: 3;
+        }
+        .btn:hover {
+            background-color: #ff1493;
+            z-index: 3;
+        }
+        .celebration-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .celebration-shape {
+            position: absolute;
+            font-size: 24px;
+            animation: rise 10s linear infinite;
+        }
+        @keyframes rise {
+            from {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🎥 Best Memories with my Love 🎞️</h1>
+    <div class="video-gallery">
+        <div class="video-container">
+            <video controls>
+                <source src="vidoes/video1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-caption">caption for first video</div>
+        </div>
+        <div class="video-container">
+            <video controls>
+                <source src="vidoes/video2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-caption">caption for second video</div>
+        </div>
+        <div class="video-container">
+            <video controls>
+                <source src="vidoes/video3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-caption">caption for third video</div>
+        </div>
+        <div class="video-container">
+            <video controls>
+                <source src="vidoes/video4.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-caption">caption for fourth video</div>
+        </div>
+        <div class="video-container">
+            <video controls>
+                <source src="vidoes/video5.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-caption">caption for fifth video</div>
+        </div>
+    </div>
+    <button class="btn" onclick="window.location.href='gallery.html'">Photo Gallery 📸</button>
+    <button class="btn" onclick="window.location.href='index.html'">Birthday page 👀</button>
+    <div class="celebration-container"></div>
+    <script>
+        function createCelebration() {
+            const symbols = ["🎊", "⭐", "💖", "🎈", "✨", "🎉"];
+            for (let i = 0; i < 10; i++) {
+                let shape = document.createElement("div");
+                shape.classList.add("celebration-shape");
+                shape.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+                shape.style.left = Math.random() * 100 + "vw";
+                shape.style.animationDuration = Math.random() * 6 + 4 + "s";
+                document.querySelector(".celebration-container").appendChild(shape);
+                setTimeout(() => shape.remove(), 10000);
+            }
+        }
+        setInterval(createCelebration, 1000);
+    </script>
+</body>
+</html>
